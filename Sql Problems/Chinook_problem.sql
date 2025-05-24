@@ -33,7 +33,15 @@ select cus.Customerid, cus.FirstName,prr from (select customerid , sum(Total ) a
 
 
 
+/*
 
+5. Top 5 Customers by Spending
+Objective: Identify the top 5 customers based on their total spending.
+
+*/
+
+
+select cus.FirstName, top.Customerid, top.price from (select Customerid,sum(Total) as price from Invoice group by Customerid order by price desc limit 5) as top join Customer as cus on cus.Customerid = top.Customerid;
 
 
 
